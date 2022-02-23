@@ -3,3 +3,10 @@
 </template>
 
 <style src='@/styles/reset.css'></style>
+
+<style>
+html {
+  font-size: 16px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+</style>

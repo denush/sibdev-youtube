@@ -1,7 +1,5 @@
 <template>
   <div class='login-view'>
-    login view
-
     <LoginForm />
   </div>
 </template>
@@ -19,9 +17,13 @@ export default {
 </script>
 
 <style scoped>
-  .login-view {
-    background-color: #E5E5E5;
-    height: 100vh;
-    width: 100vw;
-  }
+.login-view {
+  background-color: #FAFAFA;
+  height: 100vh;
+  width: 100vw;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 </style>
