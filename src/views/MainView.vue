@@ -1,7 +1,6 @@
 <template>
   <div>
-    main view
-    <router-link :to='{ name: "login" }'>Выйти</router-link>
+    <MainHeader />
 
     <div>
       <router-link :to='{ name: "search" }'>Поиск</router-link>
@@ -11,3 +10,15 @@
     <router-view></router-view>
   </div>
 </template>
+
+<script>
+import MainHeader from '@/components/MainHeader';
+
+export default {
+  name: 'MainView',
+
+  components: {
+    MainHeader
+  }
+}
+</script>
