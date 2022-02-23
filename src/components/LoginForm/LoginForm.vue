@@ -16,8 +16,6 @@ export default {
   name: 'LoginForm',
 
   setup() {
-    getUsers();
-
     const router = useRouter();
 
     const username = ref('');
@@ -29,8 +27,13 @@ export default {
       for (const user of userList) {
         if (username.value === user.username &&
             password.value === user.password) {
+
+          const token = user.username;
+          localStorage.setItem('token', token);
+
           router.push({ name: 'main' });
           console.log('LOGIN SUCCESS');
+
           return;
         }
       }
@@ -45,9 +48,4 @@ export default {
     };
   }
 };
-
-function getUsers() {
-  return fetch('users.json').then(res => res.json());
-}
-
 </script>
