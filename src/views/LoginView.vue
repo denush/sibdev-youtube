@@ -1,8 +1,6 @@
 <template>
-  <div>
+  <div class='login-view'>
     login view
-
-    <router-link :to='{ name: "main" }'>Войти</router-link>
 
     <LoginForm />
   </div>
@@ -19,3 +17,11 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+  .login-view {
+    background-color: #E5E5E5;
+    height: 100vh;
+    width: 100vw;
+  }
+</style>

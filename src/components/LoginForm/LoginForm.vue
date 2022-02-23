@@ -12,30 +12,30 @@
 import { ref } from 'vue';
 import { useRouter } from 'vue-router';
 
-const TEST_USERNAME = '1';
-const TEST_PASSWORD = '1';
-
 export default {
   name: 'LoginForm',
 
   setup() {
+    getUsers();
+
     const router = useRouter();
 
     const username = ref('');
     const password = ref('');
 
-    const login = () => {
-      console.log('trying to login');
-      console.log('username: ', username.value);
-      console.log('password: ', password.value);
+    const login = async () => {
+      const userList = await fetch('users.json').then(res => res.json());
 
-      if (username.value === TEST_USERNAME &&
-          password.value === TEST_PASSWORD) {
-        router.push({ name: 'main' });
-        console.log('LOGIN SUCCESS');
-      } else {
-        console.log('ERROR - WRONG INPUT');
+      for (const user of userList) {
+        if (username.value === user.username &&
+            password.value === user.password) {
+          router.push({ name: 'main' });
+          console.log('LOGIN SUCCESS');
+          return;
+        }
       }
+
+      console.log('ERROR_WRONG_INPUT');
     };
 
     return {
@@ -45,4 +45,9 @@ export default {
     };
   }
 };
+
+function getUsers() {
+  return fetch('users.json').then(res => res.json());
+}
+
 </script>
