@@ -22,6 +22,7 @@ export default {
   background-color: #1390e5;
   border: none;
   border-radius: 5px;
+  box-sizing: border-box;
   color: #fff;
   cursor: pointer;
   font-size: 1rem;

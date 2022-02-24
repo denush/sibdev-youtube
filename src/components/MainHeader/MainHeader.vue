@@ -1,30 +1,30 @@
 <template>
   <div class='main-header-wrapper'>
     <div class='main-header'>
-    <div class='main-header__left'>
-      <div class='main-header__logo-container'>
-        <img src='@/assets/sibdev-logo.png' width='70'>
-      </div>
-      <div class='main-header__navbar'>
-        <div
-          class='main-header__nav-item'
-          :class='{ "main-header__nav-item--active": isNavItemActive("search") }'
-          @click='linkTo("search")'
-        >
-          Поиск
+      <div class='main-header__left'>
+        <div class='main-header__logo-container'>
+          <img src='@/assets/sibdev-logo.png' width='70'>
         </div>
-        <div
-          class='main-header__nav-item'
-          :class='{ "main-header__nav-item--active": isNavItemActive("favorites") }'
-          @click='linkTo("favorites")'
-        >
-          Избранное
+        <div class='main-header__navbar'>
+          <div
+            class='main-header__nav-item'
+            :class='{ "main-header__nav-item--active": isNavItemActive("search") }'
+            @click='linkTo("search")'
+          >
+            Поиск
+          </div>
+          <div
+            class='main-header__nav-item'
+            :class='{ "main-header__nav-item--active": isNavItemActive("favorites") }'
+            @click='linkTo("favorites")'
+          >
+            Избранное
+          </div>
         </div>
       </div>
-    </div>
-    <div class='main-header__right'>
-      <button @click='logout' class='main-header__logout-button'>Выйти</button>
-    </div>
+      <div class='main-header__right'>
+        <button @click='logout' class='main-header__logout-button'>Выйти</button>
+      </div>
     </div>
   </div>
 </template>
@@ -67,12 +67,14 @@ export default {
 <style lang='scss' scoped>
 @import '@/styles/constants.scss';
 
-.main-header-wrapper {
-  max-width: $main-wrapper-width;
-  margin: auto;
-}
+// .main-header-wrapper {
+  
+// }
 
 .main-header {
+  max-width: $main-wrapper-width;
+  margin: auto;
+
   display: flex;
   justify-content: space-between;
 }

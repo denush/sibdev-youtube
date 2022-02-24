@@ -9,4 +9,8 @@ html {
   font-size: 16px;
   font-family: Arial, Helvetica, sans-serif;
 }
+
+#app {
+  box-sizing: border-box;
+}
 </style>

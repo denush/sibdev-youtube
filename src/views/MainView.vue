@@ -1,7 +1,9 @@
 <template>
-  <div>
+  <div class='main-view'>
     <MainHeader />
-    <router-view></router-view>
+    <div class='main-view__content'>
+      <router-view></router-view>
+    </div>
   </div>
 </template>
 
@@ -16,3 +18,15 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+.main-view {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.main-view__content {
+  height: 100%;
+}
+</style>
