@@ -67,9 +67,9 @@ export default {
 <style lang='scss' scoped>
 @import '@/styles/constants.scss';
 
-// .main-header-wrapper {
-  
-// }
+.main-header-wrapper {
+  padding: $main-wrapper-padding;
+}
 
 .main-header {
   max-width: $main-wrapper-width;
@@ -77,6 +77,7 @@ export default {
 
   display: flex;
   justify-content: space-between;
+  
 }
 
 .main-header__left {

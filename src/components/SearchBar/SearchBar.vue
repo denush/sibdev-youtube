@@ -1,13 +1,34 @@
 <template>
   <div class='search-bar'>
-    <custom-input placeholder='Что хотите посмотреть?' class='search-bar__input' />
-    <custom-button class='search-bar__search-button'>Найти</custom-button>
+    <custom-input v-model='searchInput' placeholder='Что хотите посмотреть?' class='search-bar__input' />
+    <custom-button @click='search' class='search-bar__search-button'>Найти</custom-button>
   </div>
 </template>
 
 <script>
+import { ref } from 'vue';
+import { useStore } from 'vuex';
+
 export default {
-  name: 'SearchBar'
+  name: 'SearchBar',
+
+  setup() {
+    const store = useStore();
+
+    const searchInput = ref('');
+
+    const search = () => {
+      console.log('searching for "' + searchInput.value + '"');
+
+      store.commit('setSearchRequest', searchInput.value);
+      store.dispatch('searchVideos');
+    };
+
+    return {
+      searchInput,
+      search
+    };
+  }
 }
 </script>
 
