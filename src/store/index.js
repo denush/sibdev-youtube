@@ -8,7 +8,9 @@ export default createStore({
     searchRequest: '',
     maxResults: 12,
     searchedVideos: [],
-    searchedVideosTotal: 0
+    searchedVideosTotal: 0,
+
+    viewTypeGrid: true
   },
 
   getters: {
@@ -20,7 +22,9 @@ export default createStore({
   mutations: {
     setSearchRequest(state, request) { state.searchRequest = request; },
     setSearchedVideos(state, videos) { state.searchedVideos = videos; },
-    setSearchedVideosTotal(state, total) { state.searchedVideosTotal = total; }
+    setSearchedVideosTotal(state, total) { state.searchedVideosTotal = total; },
+
+    setViewTypeGrid(state, isGrid) { state.viewTypeGrid = isGrid; }
   },
 
   actions: {
