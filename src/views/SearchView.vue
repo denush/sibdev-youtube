@@ -92,6 +92,6 @@ export default {
 }
 
 .search-view__search-bar-container {
-  margin-bottom: 2rem;
+  margin-bottom: 3rem;
 }
 </style>
