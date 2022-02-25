@@ -8,6 +8,7 @@ export default createStore({
     searchRequest: '',
     maxResults: 12,
     searchedVideos: [],
+    searchedVideosTotal: 0
   },
 
   getters: {
@@ -18,7 +19,8 @@ export default createStore({
 
   mutations: {
     setSearchRequest(state, request) { state.searchRequest = request; },
-    setSearchedVideos(state, videos) { state.searchedVideos = videos; }
+    setSearchedVideos(state, videos) { state.searchedVideos = videos; },
+    setSearchedVideosTotal(state, total) { state.searchedVideosTotal = total; }
   },
 
   actions: {
@@ -31,6 +33,7 @@ export default createStore({
 
       return fetch(searchUrl).then(res => res.json()).then(res => {
         commit('setSearchedVideos', res.items);
+        commit('setSearchedVideosTotal', res.pageInfo.totalResults);
       });
     }
   },

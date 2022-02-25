@@ -1,7 +1,7 @@
 <template>
   <div>
     <!-- <div>Видео по запросу <span>"{{ searchRequest }}"</span></div> -->
-    <div>
+    <div class='searched-videos__tolbar-container'>
       <SearchedVideosToolbar />
     </div>
 
@@ -19,8 +19,8 @@
 import { computed } from 'vue';
 import { useStore } from 'vuex';
 
-import SearchedVideosToolbar from './components/SearchedVideosToolbar';
-import SearchedVideosList from './components/SearchedVideosList';
+import SearchedVideosToolbar from '@/components/SearchedVideosToolbar';
+import SearchedVideosList from '@/components/SearchedVideosList';
 
 export default {
   name: 'SearchedVideos',
@@ -43,3 +43,9 @@ export default {
   },
 }
 </script>
+
+<style scoped>
+.searched-videos__tolbar-container {
+  margin-bottom: 1rem;
+}
+</style>
