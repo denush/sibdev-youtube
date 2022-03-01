@@ -1,12 +1,25 @@
 <template>
   <div class='search-bar'>
-    <custom-input v-model='searchInput' placeholder='Что хотите посмотреть?' class='search-bar__input' />
+    <custom-input
+      v-if='isSearched'
+      v-model='searchInput'
+      placeholder='Что хотите посмотреть?'
+      :appendBtn='true'
+      @append-btn-clicked='onAddFavoriteClicked'
+      class='search-bar__input'
+    />
+    <custom-input
+      v-else
+      v-model='searchInput'
+      placeholder='Что хотите посмотреть?'
+      class='search-bar__input'
+    />
     <custom-button @click='search' class='search-bar__search-button'>Найти</custom-button>
   </div>
 </template>
 
 <script>
-import { ref } from 'vue';
+import { ref, computed } from 'vue';
 import { useStore } from 'vuex';
 
 export default {
@@ -18,15 +31,22 @@ export default {
     const searchInput = ref('');
 
     const search = () => {
-      console.log('searching for "' + searchInput.value + '"');
-
       store.commit('setSearchRequest', searchInput.value);
       store.dispatch('searchVideos');
     };
 
+    const isSearched = computed(() => store.getters.isSearched);
+
+    const onAddFavoriteClicked = () => {
+      console.log('add to fav');
+    };
+
     return {
       searchInput,
-      search
+      search,
+
+      isSearched,
+      onAddFavoriteClicked
     };
   }
 }

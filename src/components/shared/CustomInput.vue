@@ -1,23 +1,30 @@
 <template>
-  <div class='custom-input'>
+  <div class='custom-input' :class='{ "custom-input--btn-control": appendBtn }'>
     <div v-if='label' class='custom-input__label'>{{ label }}</div>
     <div class='custom-input__input-container'>
       <input
         :value='modelValue'
         :type='type'
         :placeholder='placeholder'
+        ref='inputField'
         @input='onInput'
         class='custom-input__input'
       >
+      <div v-if='appendBtn' @click='onAppendBtnClick' class='custom-input__append-btn'>
+        append
+
+      </div>
     </div>
   </div>
 </template>
 
 <script>
+import { ref } from 'vue';
+
 export default {
   name: 'CustomInput',
 
-  emits: [ 'update:modelValue' ],
+  emits: [ 'update:modelValue', 'append-btn-clicked' ],
 
   props: {
     modelValue: {
@@ -38,16 +45,30 @@ export default {
     type: {
       type: String,
       default: null
+    },
+
+    appendBtn: {
+      type: Boolean,
+      default: false
     }
   },
 
   setup(props, { emit }) {
+    const inputField = ref(null);
+
     const onInput = (event) => {
       emit('update:modelValue', event.target.value);
     };
 
+    const onAppendBtnClick = (event) => {
+      inputField.value.focus();
+      emit('append-btn-clicked');
+    };
+
     return {
-      onInput
+      inputField,
+      onInput,
+      onAppendBtnClick
     };
   }
 }
@@ -62,6 +83,10 @@ export default {
   color: rgba(23, 23, 25, 0.3);
   margin-bottom: 4px;
   font-size: 0.9rem;
+}
+
+.custom-input__input-container {
+  display: flex;
 }
 
 .custom-input__input {
@@ -83,5 +108,22 @@ export default {
   background-color: rgba(197, 228, 249, 0.3);
   border: 1px solid #1390E5;
   outline: none;
+}
+
+.custom-input--btn-control .custom-input__input {
+  border-right: none;
+}
+
+.custom-input__input:focus ~ .custom-input__append-btn {
+  background-color: rgba(197, 228, 249, 0.3);
+  border: 1px solid #1390E5;
+  border-left: none;
+}
+
+.custom-input__append-btn {
+  background-color: #fff;
+  border: 1px solid rgba(23, 23, 25, 0.2);
+  border-left: none;
+  cursor: pointer;
 }
 </style>
