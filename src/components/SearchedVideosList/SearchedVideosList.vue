@@ -1,5 +1,5 @@
 <template>
-  <div class='video-list' :class='{ "video-list--grid-view": viewTypeGrid }'>
+  <div class='video-list' :class='{ "video-list--grid-view": viewTypeGrid, "video-list--list-view": !viewTypeGrid }'>
     <div v-for='video in videos' :key='video.id.videoId' class='video-list__video-component'>
       <iframe
         allowFullscreen
@@ -42,40 +42,46 @@ export default {
 <style lang='scss' scoped>
 @import '@/styles/constants.scss';
 
-.video-list {
+.video-list--grid-view {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
   gap: 1rem;
 }
-
 .video-list__video-component {
+  margin-bottom: 1.5rem;
+}
+
+.video-list--grid-view .video-list__video-component {
   width: 245px;
-  margin-bottom: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.video-list--list-view .video-list__video-component {
+  display: flex;
+  gap: 1rem;
+}
+
+.video-list__video-info {
+  flex: 1
 }
 
 .video-list__iframe {
+  width: 245px;
   margin-bottom: 0.5rem;
   border-radius: 10px;
   border: 2px solid #35A2EC;
   box-sizing: border-box;
 }
 
-.video-list__video-title-container {
-  /* width: 200px; */
-  /* background: #c8ad90; */
-  /* padding: 1rem; */
-}
-
 .video-list__video-title {
   margin-bottom: 0.5rem;
-
   overflow: hidden;
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   line-height: 16px;
-  height: 32px;
+  // height: 32px;
 }
 
 .video-list__channel-title {

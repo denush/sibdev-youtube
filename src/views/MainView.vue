@@ -27,6 +27,6 @@ export default {
 }
 
 .main-view__content {
-  height: 100%;
+  flex: 1;
 }
 </style>

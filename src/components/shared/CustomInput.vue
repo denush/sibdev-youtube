@@ -60,7 +60,7 @@ export default {
     };
 
     const onAppendBtnClick = (event) => {
-      inputField.value.focus();
+      // inputField.value.focus();
       emit('append-btn-clicked');
     };
 

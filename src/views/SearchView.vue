@@ -62,7 +62,6 @@ export default {
 }
 
 .search-view__content {
-  
   height: 100%;
 }
 

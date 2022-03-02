@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class='searched-videos__tolbar-container'>
+    <div class='searched-videos__toolbar-container'>
       <SearchedVideosToolbar />
     </div>
     <div>
@@ -24,7 +24,7 @@ export default {
 </script>
 
 <style scoped>
-.searched-videos__tolbar-container {
+.searched-videos__toolbar-container {
   margin-bottom: 1rem;
 }
 </style>
