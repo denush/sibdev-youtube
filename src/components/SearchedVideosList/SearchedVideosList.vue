@@ -39,11 +39,13 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang='scss' scoped>
+@import '@/styles/constants.scss';
+
 .video-list {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-around;
+  justify-content: space-between;
   gap: 1rem;
 }
 

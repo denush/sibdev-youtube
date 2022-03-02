@@ -8,9 +8,17 @@
       </div>
     </div>
     <div class='toolbar__right'>
-      <span>{{ viewTypeGrid }}</span>
-      <button @click='setViewType("list")' class='toolbar__view-switcher-button'><img width='26' src='@/assets/list.svg'></button>
-      <button @click='setViewType("grid")' class='toolbar__view-switcher-button'><img width='17' src='@/assets/four-squares.svg'></button>
+      <ListIcon
+        @click='setViewType("list")'
+        fill='#123'
+        class='toolbar__view-switcher-icon'
+        :class='{ "toolbar__view-switcher-icon--selected": isViewSelected("list") }'
+      />
+      <GridIcon
+        @click='setViewType("grid")'
+        class='toolbar__view-switcher-icon'
+        :class='{ "toolbar__view-switcher-icon--selected": isViewSelected("grid") }'
+      />
     </div>
   </div>
 </template>
@@ -19,8 +27,17 @@
 import { computed } from 'vue';
 import { useStore } from 'vuex';
 
+
+import GridIcon from '@/assets/icons/grid.svg';
+import ListIcon from '@/assets/icons/list.svg';
+
 export default {
   name: 'SearchedVideosToolbar',
+
+  components: {
+    GridIcon,
+    ListIcon
+  },
 
   setup() {
     const store = useStore();
@@ -31,8 +48,16 @@ export default {
     const viewTypeGrid = computed(() => store.state.viewTypeGrid);
 
     const setViewType = (type) => {
-      const viewTypeGrid = type === 'grid';
-      store.commit('setViewTypeGrid', viewTypeGrid);
+      const newViewTypeGrid = type === 'grid';
+      store.commit('setViewTypeGrid', newViewTypeGrid);
+    };
+
+    const isViewSelected = (type) => {
+      if (viewTypeGrid.value) {
+        return type === 'grid' ? true : false;
+      } else {
+        return type === 'list' ? true : false;
+      }
     };
 
     return {
@@ -40,7 +65,8 @@ export default {
       videosTotal,
 
       viewTypeGrid,
-      setViewType
+      setViewType,
+      isViewSelected
     };
   },
 }
@@ -62,7 +88,7 @@ export default {
     color: rgba(23, 23, 25, 0.3);
   }
 
-  .toolbar__view-switcher-button {
+  .toolbar__view-switcher-icon {
     cursor: pointer;
     padding: 0;
     background-color: transparent;
@@ -70,7 +96,14 @@ export default {
     vertical-align: middle;
   }
 
-  .toolbar__view-switcher-button:not(:last-child) {
+  .toolbar__view-switcher-icon::v-deep path {
+    opacity: 0.3;
+  }
+  .toolbar__view-switcher-icon--selected::v-deep path {
+    opacity: 1;
+  }
+
+  .toolbar__view-switcher-icon:not(:last-child) {
     margin-right: 0.5rem;
   }
 </style>

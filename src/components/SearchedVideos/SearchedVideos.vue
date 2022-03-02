@@ -3,7 +3,6 @@
     <div class='searched-videos__tolbar-container'>
       <SearchedVideosToolbar />
     </div>
-
     <div>
       <SearchedVideosList />
     </div>
