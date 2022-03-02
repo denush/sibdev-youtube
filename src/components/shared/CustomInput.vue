@@ -11,8 +11,7 @@
         class='custom-input__input'
       >
       <div v-if='appendBtn' @click='onAppendBtnClick' class='custom-input__append-btn'>
-        append
-
+        <slot name='icon'></slot>
       </div>
     </div>
   </div>
@@ -121,6 +120,10 @@ export default {
 }
 
 .custom-input__append-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 0.6rem;
   background-color: #fff;
   border: 1px solid rgba(23, 23, 25, 0.2);
   border-left: none;

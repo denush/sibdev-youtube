@@ -7,7 +7,11 @@
       :appendBtn='true'
       @append-btn-clicked='onAddFavoriteClicked'
       class='search-bar__input'
-    />
+    >
+      <template v-slot:icon>
+        <HeartIcon />
+      </template>
+    </custom-input>
     <custom-input
       v-else
       v-model='searchInput'
@@ -22,8 +26,14 @@
 import { ref, computed } from 'vue';
 import { useStore } from 'vuex';
 
+import HeartIcon from '@/assets/icons/heart.svg';
+
 export default {
   name: 'SearchBar',
+
+  components: {
+    HeartIcon
+  },
 
   setup() {
     const store = useStore();
