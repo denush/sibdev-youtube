@@ -2,7 +2,7 @@
   <div v-if='isOpen' class='fav-modal'>
     <div @click='close' class='fav-modal__background'></div>
     <div class='fav-modal__window'>
-      <ModalForm />
+      <ModalForm @cancel='close'/>
     </div>
   </div>
 </template>

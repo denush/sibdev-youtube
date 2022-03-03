@@ -45,6 +45,10 @@ export default {
     const searchInput = ref('');
     const favModalIsOpen = ref(false);
 
+    if (store.state.searchRequest !== '') {
+      searchInput.value = store.state.searchRequest;
+    }
+
     const search = () => {
       store.commit('setSearchRequest', searchInput.value);
       store.dispatch('searchVideos');

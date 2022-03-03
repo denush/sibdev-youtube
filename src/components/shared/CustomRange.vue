@@ -1,18 +1,14 @@
 <template>
-  <div class='custom-input' :class='{ "custom-input--btn-control": appendBtn }'>
-    <div v-if='label' class='custom-input__label'>{{ label }}</div>
-    <div class='custom-input__input-container'>
-      <input
-        :value='modelValue'
-        :type='type'
-        :placeholder='placeholder'
-        @input='onInput'
-        class='custom-input__input'
-      >
-      <div v-if='appendBtn' @click='onAppendBtnClick' class='custom-input__append-btn'>
-        <slot name='icon'></slot>
-      </div>
-    </div>
+  <div class='custom-range'>
+    <div v-if='label' class='custom-range__label'>{{ label }}</div>
+
+    <input
+      :value='modelValue'
+      type='range'
+      @input='onInput'
+      class='custom-range__input'
+    >
+
   </div>
 </template>
 
@@ -33,19 +29,14 @@ export default {
       default: ''
     },
 
-    placeholder: {
+    min: {
       type: String,
-      default: null
+      default: 0
     },
 
-    type: {
+    max: {
       type: String,
-      default: null
-    },
-
-    appendBtn: {
-      type: Boolean,
-      default: false
+      max: 100
     }
   },
 
@@ -54,13 +45,8 @@ export default {
       emit('update:modelValue', event.target.value);
     };
 
-    const onAppendBtnClick = (event) => {
-      emit('append-btn-clicked');
-    };
-
     return {
-      onInput,
-      onAppendBtnClick
+      onInput
     };
   }
 }
